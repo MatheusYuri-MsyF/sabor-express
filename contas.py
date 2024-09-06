@@ -1,8 +1,14 @@
 class ContaBancaria:
+    """Representa uma conta bancária básica com titular, saldo e status de ativação."""
     def __init__(self, titular, saldo):
+        """Inicializa uma nova conta bancária.
+        Args:
+            titular (str): Nome do titular da conta.
+            saldo (float): Saldo inicial da conta.
+        """
         self.titular = titular
         self.saldo = saldo
-        self._ativo = False  
+        self._ativo = False  # Atributo privado para indicar se a conta está ativa
     def __str__(self):
         return f"Conta de {self.titular} - Saldo: R${self.saldo}"
      @classmethod
@@ -23,6 +29,7 @@ print(f"Depois de ativar: Conta ativa? {conta3._ativo}")
 
 
 class ContaBancariaPythonica:
+    """Representa uma conta bancária com encapsulamento de atributos através de propriedades."""
     def __init__(self, titular, saldo):
         self._titular = titular
         self._saldo = saldo
@@ -45,6 +52,7 @@ print(f"Titular da conta 4: {conta4.titular}")
 
 
 class ClienteBanco:
+    """Representa um cliente de um banco com seus dados pessoais."""
     def __init__(self, nome, idade, endereco, cpf, profissao):
         self.nome = nome
         self.idade = idade
@@ -54,6 +62,13 @@ class ClienteBanco:
 
     @classmethod
     def criar_conta(cls, titular, saldo_inicial):
+        """Cria uma nova conta bancária associada a um cliente.
+        Args:
+            titular (str): Nome do titular da conta (que é o cliente).
+            saldo_inicial (float): Saldo inicial da conta.
+        Returns:
+            ContaBancariaPythonica: A nova conta bancária criada.
+        """
         conta = ContaBancariaPythonica(titular, saldo_inicial)
         return conta
 
